@@ -1,0 +1,22 @@
+{
+  "name": "template.typescript2.nodejs",
+  "version": "3.0.0",
+  "description": "A TypeScript + Node.js - Start Template for VS Code",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^8.1.0",
+    "ical.js": "^1.4.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@types/node": "^16.7.1",
+    "typescript": "^4.2.3"
+  }
+}
