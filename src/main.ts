@@ -1,25 +1,50 @@
 import { Utils } from "./common/utils";
+import { AddReminders } from "./common/Processing.js";
 import path from "path/posix";
-import { readFileSync } from "fs";
-const ICAL = require("ical.js");
+import { dirname } from "path/posix";
+import { fileURLToPath } from "url";
+import logSymbols from "log-symbols";
+import ICAL from "ical.js";
+import { readFileSync, writeFileSync } from "fs";
 import { Command } from "commander";
 let input = "Gurke Tomate Zwiebel";
 
-//let output = Utils.kebabStyle(input);
-
-//console.log(`output: ${output}`);
-
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const program = new Command();
 
-//program.requiredOption("-f, --file <file>", "specify input file");
+program
+  .requiredOption("-f, --file <file>", "specify input file")
+  .option("-o, --output <file>", "specify output location", "out.ics");
 
-//program.parse(process.argv);
+program.parse(process.argv);
 
-//const options = program.opts();
-//const data = readFileSync(path.resolve(__dirname, options.file), "utf8");
-const data = readFileSync("/home/jannik-arch/dev/cal/dist/test.ics", "utf8");
-console.log(data);
+let data: any;
 
+const options = program.opts();
+//read file from given path
+try {
+  data = readFileSync(path.resolve(__dirname, options.file), "utf8");
+} catch (err) {
+  console.log(logSymbols.error, err.message);
+  process.exit(1);
+}
+
+//parse file data
 const jCalData = ICAL.parse(data);
-console.log(jCalData);
-//console.log(data);
+//process data
+const result = AddReminders(jCalData);
+
+//write file
+try {
+  writeFileSync(
+    path.resolve(__dirname, options.output),
+    ICAL.stringify(result)
+  );
+  console.log(
+    logSymbols.success,
+    `Output file written to ${path.resolve(__dirname, options.output)}`
+  );
+} catch (err) {
+  console.log(logSymbols.error, err.message);
+  process.exit(1);
+}

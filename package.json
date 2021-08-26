@@ -1,6 +1,7 @@
 {
   "name": "template.typescript2.nodejs",
   "version": "3.0.0",
+  "type": "module",
   "description": "A TypeScript + Node.js - Start Template for VS Code",
   "main": "dist/main.js",
   "scripts": {
@@ -12,7 +13,8 @@
   "dependencies": {
     "commander": "^8.1.0",
     "ical.js": "^1.4.0",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "log-symbols": "^5.0.0"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.168",
