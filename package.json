@@ -1,8 +1,8 @@
 {
-  "name": "template.typescript2.nodejs",
+  "name": "icaltool",
   "version": "3.0.0",
   "type": "module",
-  "description": "A TypeScript + Node.js - Start Template for VS Code",
+  "description": "Tools for bulk editing ICALs",
   "main": "dist/main.js",
   "scripts": {
     "start": "node dist/main.js",
@@ -10,6 +10,9 @@
   },
   "author": "",
   "license": "ISC",
+  "bin": {
+    "icaltool": "./dist/main.js"
+  },
   "dependencies": {
     "commander": "^8.1.0",
     "ical.js": "^1.4.0",
