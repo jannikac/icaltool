@@ -1,4 +1,3 @@
-import { Utils } from "./common/utils";
 import { AddReminders } from "./common/Processing.js";
 import path from "path/posix";
 import { dirname } from "path/posix";
@@ -7,7 +6,6 @@ import logSymbols from "log-symbols";
 import ICAL from "ical.js";
 import { readFileSync, writeFileSync } from "fs";
 import { Command } from "commander";
-let input = "Gurke Tomate Zwiebel";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const program = new Command();
