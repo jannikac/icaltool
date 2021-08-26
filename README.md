@@ -16,7 +16,15 @@ git clone https://github.com/jannikac/IcalTools.git
 ```
 Install dependencies
 ```
-npm install -g
+npm install
+```
+Compile with typescript
+```
+tsc
+```
+Install as global command
+```
+sudo npm install -g
 ```
 
 ### Usage
