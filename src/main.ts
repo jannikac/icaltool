@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { AddReminders } from "./common/Processing.js";
 import path from "path/posix";
 import { dirname } from "path/posix";
