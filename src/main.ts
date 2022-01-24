@@ -24,7 +24,10 @@ const options = program.opts();
 try {
   data = readFileSync(path.resolve(__dirname, options.file), "utf8");
 } catch (err) {
-  console.log(logSymbols.error, err.message);
+  if (err instanceof Error) {
+    console.log(logSymbols.error, err.message);
+  }
+
   process.exit(1);
 }
 
@@ -44,6 +47,9 @@ try {
     `Output file written to ${path.resolve(__dirname, options.output)}`
   );
 } catch (err) {
-  console.log(logSymbols.error, err.message);
+  if (err instanceof Error) {
+    console.log(logSymbols.error, err.message);
+  }
+
   process.exit(1);
 }
