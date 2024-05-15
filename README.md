@@ -2,7 +2,7 @@
 
 ## Overview
 
-**iCalTool** is a command-line interface (CLI) tool written in Rust for processing iCalendar (iCal or .ics) files. Currently it adds a reminder to all events in a single .ics file.
+**iCalTool** is a command-line interface (CLI) tool written in Rust for processing iCalendar (iCal or .ics) files. Currently it adds a reminder to all events in a single .ics file. This is also a rust rewrite. You can find the old code in the legacy-ts branch.
 
 For the most part this is a personal project for my specific use case.
 
@@ -66,10 +66,6 @@ Contributions are welcome! Please feel free to submit a pull request or open an 
 3. Commit your changes (`git commit -am 'Add new feature'`).
 4. Push to the branch (`git push origin feature-branch`).
 5. Create a new Pull Request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
