@@ -10,25 +10,27 @@ env:
 permissions:
   contents: write
 jobs:
-  steps:
-    - uses: actions/checkout@v3
-    - name: Setup build environment
-      run: |
-        sudo apt-get install -y mingw-w64
-        rustup target add x86_64-pc-windows-gnu
-    - name: Build linux
-      run: cargo build --target x86_64-unknown-linux-gnu --release
-    - name: Build windows
-      run: cargo build --target x86_64-pc-windows-gnu --release
-    - name: Run tests
-      run: cargo test
-    - name: Rename releases
-      run: |
-        mv target/x86_64-unknown-linux-gnu/release/icaltool target/x86_64-unknown-linux-gnu/release/icaltool_${{ github.ref_name }}
-        mv target/x86_64-pc-windows-gnu/release/icaltool.exe target/target/x86_64-pc-windows-gnu/release/icaltool_${{ github.ref_name }}.exe
-    - name: Release
-      uses: softprops/action-gh-release@v1
-      with:
-        files: |
-          target/x86_64-unknown-linux-gnu/release/icaltool
-          target/x86_64-pc-windows-gnu/release/icaltool.exe
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup build environment
+        run: |
+          sudo apt-get install -y mingw-w64
+          rustup target add x86_64-pc-windows-gnu
+      - name: Build linux
+        run: cargo build --target x86_64-unknown-linux-gnu --release
+      - name: Build windows
+        run: cargo build --target x86_64-pc-windows-gnu --release
+      - name: Run tests
+        run: cargo test
+      - name: Rename releases
+        run: |
+          mv target/x86_64-unknown-linux-gnu/release/icaltool target/x86_64-unknown-linux-gnu/release/icaltool_${{ github.ref_name }}
+          mv target/x86_64-pc-windows-gnu/release/icaltool.exe target/target/x86_64-pc-windows-gnu/release/icaltool_${{ github.ref_name }}.exe
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            target/x86_64-unknown-linux-gnu/release/icaltool
+            target/x86_64-pc-windows-gnu/release/icaltool.exe
